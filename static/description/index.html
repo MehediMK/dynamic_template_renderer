@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Opportunity Soft">
+    <meta name="description" content="Dynamic Template Module for Odoo 17: Render templates dynamically using placeholders with support for nested and relational fields.">
+    <meta name="keywords" content="Odoo 17, Dynamic Template, Placeholder Rendering, Relational Fields, Templates">
+    <title>Dynamic Template Module - Odoo 17</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #444;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #333;
+            overflow-x: auto;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin: 10px 0;
+            padding: 0 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .screenshot {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dynamic Template Module</h1>
+        <h2>Overview</h2>
+        <p>
+            The <strong>Dynamic Template Module</strong> provides an intuitive way to dynamically render templates
+            with placeholders in Odoo 17. Use this module to create customizable templates that replace placeholders
+            with field values from your models, including nested relational fields and formatted dates.
+        </p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Dynamically render templates with placeholders.</li>
+            <li>Supports nested fields, One2many, and Many2many relationships.</li>
+            <li>Automatically formats date and datetime fields.</li>
+            <li>Easy integration into any model using a mixin.</li>
+        </ul>
+
+        <h2>How to Use</h2>
+        <h3>Step 1: Add the Mixin</h3>
+        <p>Inherit the mixin in your model:</p>
+        <pre>
+from odoo import models, fields, api
+
+class YourModel(models.Model):
+    _name = 'your.model'
+    _inherit = 'dynamic.template.mixin'
+
+    base_template = fields.Html(string="Base Template")
+    next_template = fields.Html(string="Next Template")
+    other_template = fields.Html(string="Rendered Base Template")
+    render_template = fields.Html(string="Rendered Next Template")
+
+    @api.onchange('base_template', 'next_template')
+    def update_description(self):
+        for rec in self:
+            rec.other_template = self.update_dynamic_field(rec.base_template)
+            rec.render_template = self.update_dynamic_field(rec.next_template)
+        </pre>
+
+        <h3>Step 2: Use Placeholders</h3>
+        <p>Define placeholders in your templates:</p>
+        <pre>
+Hello {{object.name}}, your ID is {{object.st_id}}. Your address is {{object.st_address}}.
+        </pre>
+        <p>Relational fields can be accessed using dot notation:</p>
+        <pre>
+Your product is {{object.line_ids.product_id.name}}.
+        </pre>
+
+        <h3>Step 3: Save and View Rendered Output</h3>
+        <p>The placeholders are replaced with corresponding field values in the rendered fields.</p>
+
+        <h2>Screenshots</h2>
+        <div class="screenshot">
+            <img src="static/description/screenshot1.png" alt="Screenshot 1">
+            <p>Form View Example</p>
+        </div>
+        <div class="screenshot">
+            <img src="static/description/screenshot2.png" alt="Screenshot 2">
+            <p>Rendered Template Example</p>
+        </div>
+
+        <h2>License</h2>
+        <p>
+            This module is licensed under LGPL-3. For more details, visit
+            <a href="https://choosealicense.com/licenses/lgpl-3.0/">LGPL-3 License</a>.
+        </p>
+
+        <footer>
+            &copy; 2024 Opportunity Soft. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>
