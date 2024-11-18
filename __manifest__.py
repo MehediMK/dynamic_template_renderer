@@ -16,6 +16,7 @@
     'category': 'Tools',
     'license': 'LGPL-3',
     'depends': ['base'],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': False,
     'auto_install': False,
