@@ -1,6 +1,6 @@
 {
     'name': 'Dynamic Template Renderer',
-    'version': '1.4',
+    'version': '1.5',
     'summary': 'Reusable template rendering with dynamic placeholders.',
     'description': """
         Dynamic Template Module

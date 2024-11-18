@@ -11,96 +11,92 @@
     <title>Dynamic Template Renderer</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            color: #212529;
         }
-        .container {
+        .o_container {
             max-width: 900px;
             margin: 20px auto;
             padding: 20px;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #2a9d8f;
+        .o_title {
+            color: #007bff;
             text-align: center;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
-        h2 {
-            color: #264653;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        p {
+        .o_subtitle {
+            color: #495057;
             margin: 10px 0;
+            font-size: 1.1em;
         }
-        ul {
+        .o_list {
             list-style: none;
-            padding: 0;
+            padding-left: 20px;
         }
-        ul li {
-            padding: 5px 0;
-            display: flex;
-            align-items: center;
-        }
-        ul li::before {
+        .o_list li::before {
             content: "✓";
-            margin-right: 10px;
-            color: #2a9d8f;
+            color: #007bff;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
-        .screenshot {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .screenshot img {
-            max-width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-        .code-snippet {
-            background: #f4f4f4;
-            border-left: 4px solid #2a9d8f;
+        .o_snippet {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
             padding: 10px;
             font-family: 'Courier New', Courier, monospace;
-            color: #333;
             overflow-x: auto;
             margin: 15px 0;
+            color: #212529;
         }
-        .cta {
+        .o_cta {
             text-align: center;
             margin-top: 20px;
         }
-        .cta a {
+        .o_cta a {
             display: inline-block;
-            padding: 10px 20px;
-            background: #2a9d8f;
+            background: #007bff;
             color: #fff;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
+            font-size: 1.1em;
         }
-        .cta a:hover {
-            background: #21867a;
+        .o_cta a:hover {
+            background: #0056b3;
+        }
+        .o_screenshot {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .o_screenshot img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Dynamic Template Renderer Module</h1>
+    <h1 class="o_title">Dynamic Template Renderer Module</h1>
     <h2>Overview</h2>
-    <p>
+    <p class="o_subtitle">
         The <strong>Dynamic Template Renderer Module</strong> provides an intuitive way to dynamically render templates
         with placeholders in Odoo 17. Use this module to create customizable templates that replace placeholders
         with field values from your models, including nested relational fields and formatted dates.
     </p>
 
-    <h2>Key Features</h2>
-    <ul>
+    <h2 class="o_subtitle">Key Features</h2>
+    <ul class="o_list">
         <li>Dynamically replace placeholders with model field values.</li>
         <li>Support for nested and relational fields (One2many, Many2many).</li>
         <li>Automated formatting for date and datetime fields.</li>
@@ -108,8 +104,8 @@
         <li>Effortlessly create dynamic templates for reports, emails, and more.</li>
     </ul>
 
-    <h2>How to Use</h2>
-    <h3>Step 1: Add the Mixin</h3>
+    <h2 class="o_subtitle">How to Use</h2>
+    <h3 class="o_subtitle">Step 1: Add the Mixin</h3>
     <p>Inherit the mixin in your model:</p>
     <div class="code-snippet"><pre>
 from odoo import models, fields, api
@@ -131,7 +127,7 @@ class YourModel(models.Model):
         </pre>
     </div>
 
-    <h3>Step 2: Use Placeholders</h3>
+    <h3 class="o_subtitle">Step 2: Use Placeholders</h3>
     <p>Define placeholders in your templates:</p>
     <div class="code-snippet"><pre>
 Hello {{object.name}}, your ID is {{object.st_id}}. Your address is {{object.st_address}}.
@@ -142,14 +138,14 @@ Hello {{object.name}}, your ID is {{object.st_id}}. Your address is {{object.st_
 Your product is {{object.line_ids.product_id.name}}.
         </pre>
     </div>
-    <h2>Example Workflow</h2>
-    <ol>
+    <h2 class="o_subtitle">Example Workflow</h2>
+    <ul class="o_list">
         <li>Define your HTML template with placeholders, e.g., <code>{{object.partner_id.name}}</code>.</li>
         <li>Use the module's dynamic method to process and render the template with real data.</li>
         <li>Save or display the rendered output in your desired field or view.</li>
-    </ol>
+    </ul>
 
-    <h2>Technical Details</h2>
+    <h2 class="o_subtitle">Technical Details</h2>
     <p>The following reusable method lies at the core of this module:</p>
     <div class="code-snippet">
         def get_model_field_value(obj, field_path):
@@ -157,38 +153,38 @@ Your product is {{object.line_ids.product_id.name}}.
         # Supports dynamic fetching and formatting
     </div>
 
-    <h3>Step 3: Save and View Rendered Output</h3>
+    <h3 class="o_subtitle">Step 3: Save and View Rendered Output</h3>
     <p>The placeholders are replaced with corresponding field values in the rendered fields.</p>
 
-    <h2>Screenshots</h2>
-    <div class="screenshot">
+    <h2 class="o_subtitle">Screenshots</h2>
+    <div class="o_screenshot">
         <img width="100%"
              src="https://raw.githubusercontent.com/MehediMK/dynamic_template_renderer/refs/heads/main/dynamic_template_renderer/static/description/screenshot1.png"
              alt="Screenshot 1">
         <p>Form View Example</p>
     </div>
-    <div class="screenshot">
+    <div class="o_screenshot">
         <img width="100%"
              src="https://raw.githubusercontent.com/MehediMK/dynamic_template_renderer/refs/heads/main/dynamic_template_renderer/static/description/screenshot2.png"
              alt="Screenshot 2">
         <p>Rendered Template Example</p>
     </div>
-    <div class="screenshot">
+    <div class="o_screenshot">
         <img width="100%"
              src="https://raw.githubusercontent.com/MehediMK/dynamic_template_renderer/refs/heads/main/dynamic_template_renderer/static/description/screenshot3.png"
              alt="Screenshot 2">
         <p>Module in app list</p>
     </div>
-    <h2>Benefits</h2>
-    <ul>
+    <h2 class="o_subtitle">Benefits</h2>
+    <ul class="o_list">
         <li>Save time with automated template rendering.</li>
         <li>Enhance accuracy by eliminating manual entry errors.</li>
         <li>Deliver professional documents and reports effortlessly.</li>
     </ul>
 
-    <h2>Support</h2>
+    <h2 class="o_subtitle">Support</h2>
     <p>For Customization and Developer Support: mailto:mehedikhan.cse@gmail.com or whatsapp to +8801531993979</p>
-    <div class="cta">
+    <div class="o_cta">
             <a href="https://apps.odoo.com/apps/modules/17.0/dynamic_template_renderer" target="_blank">Download Now!</a>
         </div>
     <footer>
