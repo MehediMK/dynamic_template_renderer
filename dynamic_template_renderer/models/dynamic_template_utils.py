@@ -15,27 +15,21 @@ def get_model_field_value(obj, field_path):
         if not hasattr(current_value, field_name):
             current_value = ''
             break
-        data = getattr(current_value, field_name)
-        current_value = data if not isinstance(data, bool) else ''
 
-        # Handle One2many or Many2many fields by recursing for each related record
-        if isinstance(current_value, models.Model):
-            if index < len(fields_chain) - 1 and isinstance(
-                    getattr(current_value, fields_chain[index + 1], None), list
-            ):
+        data = getattr(current_value, field_name)
+
+        # Handle relational fields
+        if isinstance(data, models.Model):
+            if len(data) > 1:
+                # Handle multiple records
                 current_value = ', '.join(
-                    str(
-                        get_model_field_value(record, '.'.join(fields_chain[index + 1:]))
-                    ) for record in current_value
+                    str(get_model_field_value(record, '.'.join(fields_chain[index + 1:])))
+                    for record in data
                 )
                 break
-        elif isinstance(current_value, list) and current_value and isinstance(current_value[0], models.Model):
-            current_value = ', '.join(
-                str(
-                    get_model_field_value(record, '.'.join(fields_chain[index + 1:]))
-                ) for record in current_value
-            )
-            break
+            data = data[0] if len(data) == 1 else None
+
+        current_value = data if not isinstance(data, bool) else ''
 
     # Format date or datetime at the end
     if isinstance(current_value, (date, datetime)):
