@@ -1,6 +1,6 @@
 {
     'name': 'Dynamic Template Renderer',
-    'version': '17.0.1.0.0',
+    'version': '1.0',
     'summary': 'Reusable template rendering with dynamic placeholders.',
     'description': """
         Dynamic Template Module
@@ -16,7 +16,7 @@
     'category': 'Tools',
     'license': 'LGPL-3',
     'depends': ['base'],
-    'images': ['images/main_1.png', 'images/main_2.png', 'images/main_screenshot.png'],
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': False,
     'auto_install': False,
