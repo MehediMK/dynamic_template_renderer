@@ -1,6 +1,6 @@
 {
     'name': 'Dynamic Template Renderer',
-    'version': '1.2',
+    'version': '1.3',
     'summary': 'Reusable template rendering with dynamic placeholders.',
     'description': """
         Dynamic Template Module
@@ -14,7 +14,7 @@
     'author': 'Mehedi Khan',
     'price': '10.0',
     'currency': 'USD',
-    'website': 'https://yourwebsite.com',
+    'website': 'https://apps.odoo.com/apps/browse?repo_maintainer_id=717323',
     'category': 'Tools',
     'license': 'OPL-1',
     'depends': ['base'],
