@@ -1,6 +1,6 @@
 {
     'name': 'Dynamic Template Renderer',
-    'version': '1.3',
+    'version': '1.4',
     'summary': 'Reusable template rendering with dynamic placeholders.',
     'description': """
         Dynamic Template Module
@@ -11,7 +11,7 @@
         - Supports One2many and Many2many relationships.
         - Handles date and datetime formatting.
     """,
-    'author': 'Mehedi Khan',
+    'author': 'Opportunity Soft',
     'price': 10.0,
     'currency': 'USD',
     'support': 'mehedikhan.cse@gmail.com',
