@@ -15,7 +15,7 @@ The **Dynamic Template Module** provides a seamless way to dynamically render te
 ---
 
 ### **Installation**
-1. Log in to your Odoo 17 instance.
+1. Log in to your Odoo 18 instance.
 2. Go to **Apps**.
 3. Click **Update Apps List**.
 4. Search for **Dynamic Template Module**.
@@ -133,4 +133,4 @@ If you encounter any issues or have questions:
 ---
 
 ### **License**
-This module is licensed under the LGPL-3 license. For details, refer to the [license documentation](https://choosealicense.com/licenses/lgpl-3.0/).
+This module is licensed under the OPL-1 license. 
