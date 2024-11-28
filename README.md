@@ -127,8 +127,8 @@ This module is easily extensible. Developers can inherit the mixin and integrate
 
 ### **Support**
 If you encounter any issues or have questions:
-- Visit Our [Medium Profile](https://mehedi-khan.medium.com/).
-- Email us at mehedikhan.cse@gmail.com.
+- Visit Our [Medium Profile](https://mehedi-khan.medium.com/)
+- Email us at [mehedikhan.cse@gmail.com](mailto:mehedikhan.cse@gmail.com)
 
 ---
 
