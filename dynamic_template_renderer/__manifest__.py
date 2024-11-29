@@ -11,7 +11,7 @@
         - Supports One2many and Many2many relationships.
         - Handles date and datetime formatting.
     """,
-    'author': 'Opportunity Soft',
+    'author': 'Opportunities Soft',
     'price': 10.0,
     'currency': 'USD',
     'support': 'mehedikhan.cse@gmail.com',
