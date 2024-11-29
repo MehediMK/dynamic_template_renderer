@@ -133,4 +133,4 @@ If you encounter any issues or have questions:
 ---
 
 ### **License**
-This module is licensed under the [OPL-1](dynamic_template_renderer%2FLICENSE) (LICENSE) license.
+This module is licensed under the [OPL-1](LICENSE) license.
